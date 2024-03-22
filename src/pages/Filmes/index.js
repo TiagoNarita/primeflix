@@ -1,9 +1,9 @@
 function Filme() {
-    return (
-        <div>
-            <h1>Bem Vindo a pagina de detalhe de filmes</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Welcome to the movie details page</h1>
+    </div>
+  );
 }
 
 export default Filme;
