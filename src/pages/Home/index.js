@@ -16,7 +16,6 @@ function Home() {
           pages: 20,
         },
       });
-      //console.log(response.data.results.slice(0, 10));
       setfilmes(response.data.results.slice(0, 10));
       setLoad(false);
     }

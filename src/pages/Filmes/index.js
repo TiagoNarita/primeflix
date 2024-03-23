@@ -4,7 +4,8 @@ import api from "../../services/api";
 
 function Filme() {
   const { id } = useParams();
-  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieDetails, setMovieDetails] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadFilme() {
@@ -16,7 +17,7 @@ function Filme() {
           },
         })
         .then((response) => {
-          console.log(response);
+          setMovieDetails(response.data);
         })
         .catch(() => {
           console.log("Filme não encontrado");
@@ -24,10 +25,19 @@ function Filme() {
     }
 
     loadFilme();
+
+    return () => {
+      console.log("conponente foi desmontado");
+    };
+
+    console.log(movieDetails);
   }, []);
 
-  console.log(movieDetails);
-  return (
+  return loading ? (
+    <div>
+      <h2>oi</h2>
+    </div>
+  ) : (
     <div>
       <h1>Acessing the movie {id}</h1>
     </div>
