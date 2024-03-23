@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./home.css";
 
 function Home() {
-  const [filmes, setfilmes] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function Home() {
           pages: 20,
         },
       });
-      setfilmes(response.data.results.slice(0, 10));
+      setMovies(response.data.results.slice(0, 10));
       setLoad(false);
     }
 
@@ -33,15 +33,15 @@ function Home() {
     return (
       <div className="container">
         <div className="lista-filme">
-          {filmes.map((filme) => {
+          {movies.map((movie) => {
             return (
-              <article key={filme.id}>
-                <strong>{filme.title}</strong>
+              <article key={movie.id}>
+                <strong>{movie.title}</strong>
                 <img
-                  src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`}
-                  alt={filme.title}
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  alt={movie.title}
                 />
-                <Link to={`/filme/${filme.id}`}>Access</Link>
+                <Link to={`/filme/${movie.id}`}>Access</Link>
               </article>
             );
           })}

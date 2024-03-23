@@ -18,6 +18,7 @@ function Filme() {
         })
         .then((response) => {
           setMovieDetails(response.data);
+          setLoading(false);
         })
         .catch(() => {
           console.log("Filme não encontrado");
@@ -25,21 +26,24 @@ function Filme() {
     }
 
     loadFilme();
-
+    console.log(movieDetails);
     return () => {
       console.log("conponente foi desmontado");
     };
-
-    console.log(movieDetails);
   }, []);
 
   return loading ? (
-    <div>
-      <h2>oi</h2>
+    <div className="filme-info">
+      <h1>Loading movies</h1>
     </div>
   ) : (
-    <div>
-      <h1>Acessing the movie {id}</h1>
+    <div className="filme-info">
+      <h1>{movieDetails.title}</h1>
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`}
+        alt={movieDetails.title}
+      />
+      <h3></h3>
     </div>
   );
 }
