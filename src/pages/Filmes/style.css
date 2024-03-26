@@ -1,4 +1,5 @@
 .movie-info {
+  margin: 0 auto;
   margin-top: 18px;
   display: flex;
   flex-direction: column;
@@ -18,4 +19,37 @@
   object-fit: cover;
 }
 
-.movie-info
+.movie-info h3 {
+  margin-top: 14px;
+}
+
+.movie-info span {
+  margin: 8px 0;
+}
+
+.area-button button {
+  margin-right: 12px;
+  margin-top: 14px;
+  margin-left: 0;
+  cursor: pointer;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  padding: 12px;
+  border-radius: 4px;
+  transition: all 0.5s;
+}
+.area-button button:hover {
+  background-color: brown;
+  color: #fff;
+}
+
+.area-button a {
+  text-decoration: none;
+  color: #000;
+}
+
+.area-button a:hover {
+  color: #fff;
+  transition: all 0.5s;
+}
