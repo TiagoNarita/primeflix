@@ -11,9 +11,7 @@ function Favorites() {
     setFavorites(favoritesMovies);
   }, []);
 
-  function deleteMovie() {
-    favorites;
-  }
+  function deleteMovie() {}
 
   return (
     <div className="favorites-movies">
