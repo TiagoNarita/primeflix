@@ -1,0 +1,25 @@
+.favorites-movies {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  margin: 20px;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  margin: 7px;
+}
+
+.link {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #116feb;
+}
