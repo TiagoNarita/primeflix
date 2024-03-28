@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import "./style.css";
+import { toast } from "react-toastify";
 
 function Filme() {
   const { id } = useParams();
@@ -20,22 +21,17 @@ function Filme() {
           },
         })
         .then((response) => {
-          console.log(response);
           setMovieDetails(response.data);
           setLoading(false);
         })
         .catch(() => {
-          console.log("Filme não encontrado");
           navigate("/", { replace: true });
           return;
         });
     }
 
     loadFilme();
-    console.log(movieDetails);
-    return () => {
-      console.log("conponente foi desmontado");
-    };
+    return () => {};
   }, [navigate, id]);
 
   function salvarFilme() {
@@ -46,15 +42,14 @@ function Filme() {
       return filmesSalvos.id === movieDetails.id;
     });
 
-    console.log(hasMovies);
     if (hasMovies) {
-      alert("esse filme ja esta na lista");
+      toast.warn("This movie is already in your list");
       return;
     }
 
     saveMovies.push(movieDetails);
     localStorage.setItem("@primeflix", JSON.stringify(saveMovies));
-    alert("FILME SALVO COM SUCESSO");
+    toast.success("Movie saved successfully");
   }
 
   return loading ? (
@@ -70,7 +65,7 @@ function Filme() {
       />
       <h3>Synopsis</h3>
       <span>{movieDetails.overview}</span>
-      <strong>Avaliation: {Math.round(movieDetails.vote_average)}/10</strong>
+      <strong>Evaluation: {Math.round(movieDetails.vote_average)}/10</strong>
 
       <div className="area-button">
         <button onClick={salvarFilme}>Save</button>
